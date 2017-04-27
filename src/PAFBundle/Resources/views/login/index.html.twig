@@ -1,0 +1,44 @@
+{% extends 'PAFBundle::base.html.twig' %}
+{% block title %} PAFLeChat - Login {% endblock %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/login.css') }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/preloader.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    {#<div id="preloader"></div>#}
+
+    <div class="wrapper">
+        <div class="container">
+            <h1>PAF Le Chat</h1>
+
+            {{ form_start(formLogin, {'attr': {'class': 'form'}}) }}
+                {{ form_errors(formLogin) }}
+                {{ form_errors(formLogin.name) }}
+                {{ form_widget(formLogin.name) }}
+                {{ form_widget(formLogin.save) }}
+            {{ form_end(formLogin) }}
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <p class="footer-text">@PAF - Wild Code School [HACKATHON 2.0]</p>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/preloader.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'PAFBundle::base.html.twig' %}
+
+
+{% form_theme formChat _self %}
+
+{%- block submit_widget -%}
+    {%- set type = type|default('submit') -%}
+
+    {%- if label is empty -%}
+        {%- if label_format is not empty -%}
+            {% set label = label_format|replace({
+            '%name%': name,
+            '%id%': id,
+            }) %}
+        {%- else -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+    {%- endif -%}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+        <i class="material-icons">chat</i>
+    </button>
+{%- endblock submit_widget -%}
+
+{% block body %}
+    {% include 'PAFBundle:chat:header.html.twig' %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="divider"></div>
+                <table class="striped">
+                    <tbody>
+                        {% for chat in chats %}
+                            <tr>
+                                <td>[{{ chat.indicator|date("d/m/Y H:i:s") }}] <strong>{{ chat.name }}</strong> :</td>
+                                <td>{{ chat.message }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            {{ form_start(formChat, {'attr': {'class': 'col s12'}}) }}
+            <div class="row">
+                {{ form_errors(formChat) }}
+                <div class="input-field col s11">
+                    {{ form_errors(formChat.message) }}
+                    {{ form_widget(formChat.message) }}
+                </div>
+                <div class="input-field col s1">
+                    {{ form_widget(formChat.save) }}
+                </div>
+            </div>
+            {{ form_end(formChat) }}
+        </div>
+    </div>
+{% endblock %}
+
+
