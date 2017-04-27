@@ -237,6 +237,14 @@ form button:hover {
     animation-delay: 11s;
 }
 
+p.footer-text {
+    color: black;
+    top: 77%;
+    left: 50%;
+    position: absolute;
+    display: block;
+}
+
 @-webkit-keyframes square {
     0% {
         -webkit-transform: translateY(0);

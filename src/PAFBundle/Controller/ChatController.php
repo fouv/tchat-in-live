@@ -14,7 +14,6 @@ class ChatController extends Controller
      */
     public function indexAction(Request $request)
     {
-
-        return $this->render('PAFBundle:chat:chat.html.twig');
+        return $this->render('PAFBundle:chat:index.html.twig');
     }
 }

@@ -3,9 +3,12 @@
 
 {% block stylesheets %}
     <link type="text/css" rel="stylesheet" href="{{ asset('css/login.css') }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/preloader.css') }}"/>
 {% endblock %}
 
 {% block body %}
+    <div id="preloader"></div>
+
     <div class="wrapper">
         <div class="container">
             <h1>PAF Le Chat</h1>
@@ -31,7 +34,11 @@
             <li></li>
         </ul>
     </div>
+    <p class="footer-text">@PAF - Wild Code School [HACKATHON 2.0]</p>
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/preloader.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 {% endblock %}
