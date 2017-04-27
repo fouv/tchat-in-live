@@ -17,7 +17,9 @@ class ChatForm extends AbstractType
                 'required'  => true,
                 'attr'      => array('placeholder' => 'Ton message')
             ))
-             ->add('save', SubmitType::class);
+             ->add('save', SubmitType::class, array(
+                 'attr' => array('class' => 'btn-floating btn-large waves-effect waves-light')
+             ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

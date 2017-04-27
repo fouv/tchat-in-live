@@ -1,23 +1,47 @@
 {% extends 'PAFBundle::base.html.twig' %}
 
+
+{% form_theme formChat _self %}
+
+{%- block submit_widget -%}
+    {%- set type = type|default('submit') -%}
+
+    {%- if label is empty -%}
+        {%- if label_format is not empty -%}
+            {% set label = label_format|replace({
+            '%name%': name,
+            '%id%': id,
+            }) %}
+        {%- else -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+    {%- endif -%}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+        <i class="material-icons">chat</i>
+    </button>
+{%- endblock submit_widget -%}
+
 {% block body %}
     {% include 'PAFBundle:chat:header.html.twig' %}
     {#{{ name }}#}
 
     <table>
-    {% for chat in chats %}
-        <tr>
-            <td>{{ chat.name }}</td>
-            <td>{{ chat.message }}</td>
-        </tr>
-    {% endfor %}
+        {% for chat in chats %}
+            <tr>
+                <td>{{ chat.name }}</td>
+                <td>{{ chat.message }}</td>
+            </tr>
+        {% endfor %}
     </table>
 
     {{ form_start(formChat) }}
-        {{ form_errors(formChat) }}
-        {{ form_errors(formChat.message) }}
-        {{ form_widget(formChat.message) }}
-        {{ form_widget(formChat.save) }}
+    {{ form_errors(formChat) }}
+    {{ form_errors(formChat.message) }}
+    {{ form_widget(formChat.message) }}
+    {{ form_widget(formChat.save) }}
     {{ form_end(formChat) }}
 
+
 {% endblock %}
+
+
