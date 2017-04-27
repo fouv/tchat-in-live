@@ -2,7 +2,7 @@
 
 namespace PAFBundle\Controller;
 
-use PAFBundle\Fom\LoginForm;
+use PAFBundle\Form\LoginForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,14 +17,16 @@ class DefaultController extends Controller
     {
         $login = $request->getSession();
 
-        $login->setName('name');
-        $login->getName('name');
+        $formLogin = $this->createForm(LoginForm::class);
 
-        $login->getFlashBag()->add('notice', 'Bienvenue !');
+        $formLogin->handleRequest($request);
 
-        $form = $this->createForm(LoginForm::class);
+        if ($formLogin->isSubmitted() && $formLogin->isValid()) {
+            $data = $formLogin->getData();
+            $login->set('name', $data('name'));
 
-        $form->handleRequest($request);
+            $login->getFlashBag()->add('notice', 'Bienvenue !');
+        }
 
         return $this->render('PAFBundle:login:index.html.twig');
     }
