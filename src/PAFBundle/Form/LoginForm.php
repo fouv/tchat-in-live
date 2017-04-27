@@ -19,7 +19,7 @@ class LoginForm extends AbstractType
             ))
             ->add('save', SubmitType::class, array(
                 'label' => 'GO !',
-                'attr' => array('class' => 'button-sign')
+                'attr' => array('class' => 'login-button')
             ));
     }
 
