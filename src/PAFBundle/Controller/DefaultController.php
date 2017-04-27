@@ -2,9 +2,11 @@
 
 namespace PAFBundle\Controller;
 
+use PAFBundle\Fom\LoginForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class DefaultController extends Controller
 {
@@ -13,12 +15,17 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $login = $request->getSession();
 
-        $login->setName('Login');
+        $login->setName('name');
+        $login->getName('name');
+
+        $login->getFlashBag()->add('notice', 'Bienvenue !');
+
         $form = $this->createForm(LoginForm::class);
 
         $form->handleRequest($request);
 
-        return $this->render('PAFBundle:Default:index.html.twig');
+        return $this->render('PAFBundle:login:index.html.twig');
     }
 }
