@@ -125,3 +125,4 @@ class Chat
         return $this->message;
     }
 }
+
