@@ -13,7 +13,7 @@ class LoginController extends Controller
     /**
      * @Route("/", name="home")
      */
-    public function indexAction(Request $request)
+    public function loginAction(Request $request)
     {
         $login = $request->getSession();
 
