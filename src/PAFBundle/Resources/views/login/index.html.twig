@@ -1,7 +1,37 @@
+{% extends 'PAFBundle::base.html.twig' %}
 {% block title %} PAFLeChat - Login {% endblock %}
 
-{% block stylesheet %}
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/login.css') }}"/>
 {% endblock %}
 
 {% block body %}
+    <div class="wrapper">
+        <div class="container">
+            <h1>PAF Le Chat</h1>
+
+            {{ form_start(formLogin, {'attr': {'class': 'form'}}) }}
+                {{ form_errors(formLogin) }}
+                {{ form_errors(formLogin.name) }}
+                {{ form_widget(formLogin.name) }}
+                {{ form_widget(formLogin.save) }}
+            {{ form_end(formLogin) }}
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}

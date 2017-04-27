@@ -1,0 +1,22 @@
+{% extends 'PAFBundle::base.html.twig' %}
+
+{% block body %}
+    {#{{ name }}#}
+
+    <table>
+    {% for chat in chats %}
+        <tr>
+            <td>{{ chat.name }}</td>
+            <td>{{ chat.message }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    {{ form_start(formChat) }}
+        {{ form_errors(formChat) }}
+        {{ form_errors(formChat.message) }}
+        {{ form_widget(formChat.message) }}
+        {{ form_widget(formChat.save) }}
+    {{ form_end(formChat) }}
+
+{% endblock %}

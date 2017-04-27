@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class DefaultController extends Controller
+class LoginController extends Controller
 {
     /**
      * @Route("/", name="home")
@@ -18,16 +18,18 @@ class DefaultController extends Controller
         $login = $request->getSession();
 
         $formLogin = $this->createForm(LoginForm::class);
-
         $formLogin->handleRequest($request);
-
         if ($formLogin->isSubmitted() && $formLogin->isValid()) {
             $data = $formLogin->getData();
-            $login->set('name', $data('name'));
+            $login->set('name', $data['name']);
+            $login->getFlashBag()->add('success', 'Bienvenue '.$data['name'].' sur PAFLeChat !');
 
-            $login->getFlashBag()->add('notice', 'Bienvenue !');
+            $url = $this->generateUrl('chat');
+            return $this->redirect($url);
         }
 
-        return $this->render('PAFBundle:login:index.html.twig');
+        return $this->render('PAFBundle:login:index.html.twig', array(
+            'formLogin' => $formLogin->createView(),
+        ));
     }
 }

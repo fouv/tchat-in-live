@@ -8,23 +8,25 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LoginForm extends AbstractType
+class ChatForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, array(
-                'required' => true,
-                'attr' => array('placeholder' => 'Name')
+            ->add('message', TextType::class, array(
+                'required'  => true,
+                'attr'      => array('placeholder' => 'Ton message')
             ))
-            ->add('save', SubmitType::class, array(
-                'label' => 'GO !',
-                'attr' => array('class' => 'login-button')
-            ));
+             ->add('save', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
 
+    }
+
+    public function getBlockPrefix()
+    {
+        return 'pafbundle_chat';
     }
 }
