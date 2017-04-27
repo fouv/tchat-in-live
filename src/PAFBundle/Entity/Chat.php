@@ -3,9 +3,10 @@
 namespace PAFBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
- * Chat
+ * ChatForm
  *
  * @ORM\Table(name="chat")
  * @ORM\Entity(repositoryClass="PAFBundle\Repository\ChatRepository")
@@ -123,5 +124,10 @@ class Chat
     public function getMessage()
     {
         return $this->message;
+    }
+
+    public function __construct()
+    {
+        $this->indicator = new \DateTime();
     }
 }
