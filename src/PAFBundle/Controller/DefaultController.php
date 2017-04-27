@@ -14,4 +14,6 @@ class DefaultController extends Controller
     {
         return $this->render('PAFBundle:Default:index.html.twig');
     }
+
+    publi
 }
