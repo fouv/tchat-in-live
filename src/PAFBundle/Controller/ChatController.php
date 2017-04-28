@@ -25,8 +25,10 @@ class ChatController extends Controller
         $chat = new Chat();
         $formChat = $this->createForm(ChatForm::class, $chat);
         $formChat->handleRequest($request);
+
         if ($formChat->isValid() && $formChat->isSubmitted()) {
             $chat->setName($name);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($chat);
             $em->flush();

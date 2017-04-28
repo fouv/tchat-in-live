@@ -3,3 +3,7 @@
 .nav-wrapper .brand-logo img {
     height: 64px;
 }
+
+.card-panel {
+    padding: 0 24px 0 24px !important;
+}

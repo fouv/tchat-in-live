@@ -19,8 +19,10 @@ class LoginController extends Controller
 
         $formLogin = $this->createForm(LoginForm::class);
         $formLogin->handleRequest($request);
+
         if ($formLogin->isSubmitted() && $formLogin->isValid()) {
             $data = $formLogin->getData();
+
             $login->set('name', $data['name']);
             $login->getFlashBag()->add('success', 'Bienvenue '.$data['name'].' sur PAFLeChat !');
 

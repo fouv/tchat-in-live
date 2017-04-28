@@ -1,5 +1,5 @@
 {% extends 'PAFBundle::base.html.twig' %}
-
+{% block title %} - Chat {% endblock %}
 
 {% form_theme formChat _self %}
 
@@ -23,6 +23,20 @@
 
 {% block body %}
     {% include 'PAFBundle:chat:header.html.twig' %}
+
+    {% if app.session.flashBag.has('success') %}
+        {% for msg in app.session.flashBag.get('success') %}
+            <div class="card-panel teal lighten-2">
+                <table>
+                    <tr>
+                        <td class="white-text">{{ msg }}</td>
+                        <td class="right-align"><a href="#" class="card-close waves-effect waves-light modal-trigger btn btn-large white btn-flat">Close</a></td>
+                    </tr>
+                </table>
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <div class="container">
         <div class="row">
             <div class="col s12">
