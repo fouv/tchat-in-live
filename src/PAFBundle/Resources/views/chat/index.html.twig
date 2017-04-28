@@ -37,9 +37,23 @@
         {% endfor %}
     {% endif %}
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col s12">
+            <div class="col s2">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="http://materializecss.com/images/sample-1.jpg">
+                            </div>
+                            <div class="card-content">
+                                <p class="center-align">{{ name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s9">
                 <div class="divider"></div>
                 <table class="striped">
                     <tbody>
@@ -55,8 +69,7 @@
         </div>
 
         <div class="row">
-            {{ form_start(formChat, {'attr': {'class': 'col s12'}}) }}
-            <div class="row">
+            {{ form_start(formChat, {'attr': {'class': 'col s10 offset-s2'}}) }}
                 {{ form_errors(formChat) }}
                 <div class="input-field col s11">
                     {{ form_errors(formChat.message) }}
@@ -65,7 +78,6 @@
                 <div class="input-field col s1">
                     {{ form_widget(formChat.save) }}
                 </div>
-            </div>
             {{ form_end(formChat) }}
         </div>
     </div>
