@@ -71,8 +71,8 @@
                                 <td>[{{ chat.indicator|date("d/m/Y H:i:s") }}] <strong>{{ chat.name }}</strong> :</td>
                                 <td class="emoji">{{ chat.message }}</td>
                                 {% if chat.name == name %}
-                                <td><a href="{{ path('message_edit', {'id':chat.id}) }}">Éditer</a></td>
-                                <td><a href="{{ path('message_delete', {'id':chat.id}) }}">Supprimer</a></td>
+                                <td><a href="{{ path('message_edit', {'id':chat.id}) }}" class="btn">Éditer</a></td>
+                                <td><a href="{{ path('message_delete', {'id':chat.id}) }}" class="btn">Supprimer</a></td>
                                 {% endif %}
                             </tr>
                         {% endfor %}
