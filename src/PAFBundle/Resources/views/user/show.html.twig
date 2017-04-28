@@ -1,0 +1,67 @@
+{% extends 'PAFBundle::base.html.twig' %}
+{% block title %} - {{ name }} {% endblock %}
+
+{% block body %}
+    {% include 'PAFBundle:chat:header.html.twig' %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col s3">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="responsive-img" src="http://materializecss.com/images/sample-1.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4 center-align">{{ name }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s7">
+                <table class="centered">
+                    <thead>
+                        <tr>
+                            <th>Back to Chat</th>
+                            <th>Edit Account</th>
+                            <th>Upload Avatar</th>
+                            <th>Delete Account</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="/chat" class="btn-floating"><i class="material-icons">reply</i></a></td>
+                            <td><a href="/edit/{{ name }}" class="btn-floating disabled"><i class="material-icons">edit</i></a></td>
+                            <td><a href="/avatar/{{name }}" class="btn-floating disabled"><i class="material-icons">insert_photo</i></a></td>
+                            <td><a href="/clear/{{ name }}" class="btn-floating disabled"><i class="material-icons">close</i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <div class="col s4 offset-s4"><div class="divider"></div></div>
+                <br>
+
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header">
+                            <span class="new badge" data-badge-caption="message(s)">4</span>
+                            <i class="material-icons">mail</i>Message(s) envoyé(s)
+                        </div>
+                        <div class="collapsible-body grey">
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <span class="badge">1</span>
+                            <i class="material-icons">settings</i>W.I.P.</div>
+                        <div class="collapsible-body grey">
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

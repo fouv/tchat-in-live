@@ -10,29 +10,41 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
     /**
-     * @param Request $request
-     *
+     * @param string $name
+     * @return string
      * @Route("/show/{name}", name="show")
      */
-    public function showAction(Request $request)
+    public function showAction($name)
     {
         // TODO
+        $chat = $this->getDoctrine()->getRepository('PAFBundle:Chat')->findOneBy(array('name' => $name));
+
+        return $this->render('PAFBundle:user:show.html.twig', array(
+            'name'      => $name,
+            'chat'     => $chat,
+        ));
     }
 
     /**
      * @param Request $request
-     *
+     * @return string
      * @Route("/edit/{name}", name="edit")
      */
-    public function editAction(Request $request)
+    public function editAction(Request $request, $name)
     {
         // TODO
+        $chat = $this->getDoctrine()->getRepository('PAFBundle:Chat')->findOneBy(array('name' => $name));
+
+        return $this->render('PAFBundle:user:edit.html.twig', array(
+            'name'      => $name,
+            'chat'     => $chat,
+        ));
     }
 
     /**
      * @param Request $request
      *
-     * @Route("/avatar/{name}", name="show")
+     * @Route("/avatar/{name}", name="avatar")
      */
     public function avatarAction(Request $request)
     {
@@ -42,7 +54,7 @@ class UserController extends Controller
     /**
      * @param Request $request
      *
-     * @Route("/clear/{name}", name="show")
+     * @Route("/clear/{name}", name="clear")
      */
     public function clearAction(Request $request)
     {
