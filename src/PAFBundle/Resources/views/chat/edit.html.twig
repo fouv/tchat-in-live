@@ -1,0 +1,38 @@
+{% extends 'PAFBundle::base.html.twig' %}
+{% block title %} - Editez votre message {% endblock %}
+
+{%- block submit_widget -%}
+    {%- set type = type|default('submit') -%}
+
+    {%- if label is empty -%}
+        {%- if label_format is not empty -%}
+            {% set label = label_format|replace({
+            '%name%': name,
+            '%id%': id,
+            }) %}
+        {%- else -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+    {%- endif -%}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+        <i class="material-icons">chat</i>
+    </button>
+{%- endblock submit_widget -%}
+
+{% block body %}
+    {% include 'PAFBundle:chat:header.html.twig' %}
+    <div class="container">
+        <h3>Message edit</h3>
+
+        {{ form_start(formEdit) }}
+            {{ form_errors(formEdit.message) }}
+            {{ form_widget(formEdit.message) }}
+        {{ form_end(formEdit) }}
+
+        <ul>
+            <li>
+                <a href="{{ path('chat') }}">Back to the list</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
