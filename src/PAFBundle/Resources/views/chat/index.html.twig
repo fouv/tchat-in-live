@@ -61,6 +61,7 @@
                             <tr>
                                 <td>[{{ chat.indicator|date("d/m/Y H:i:s") }}] <strong>{{ chat.name }}</strong> :</td>
                                 <td class="emoji">{{ chat.message }}</td>
+                                <td><a href="{{ path('message_delete', {'id':chat.id}) }}">Supprimer</a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

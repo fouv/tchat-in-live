@@ -4,6 +4,7 @@ namespace PAFBundle\Controller;
 
 use PAFBundle\Entity\Chat;
 use PAFBundle\Form\ChatForm;
+use PAFBundle\PAFBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,5 +43,25 @@ class ChatController extends Controller
             'chats'     => $chats,
             'formChat'  => $formChat->createView(),
         ));
+    }
+
+    /**
+     * @param Request $reques
+     *
+     * @Route("/chat/{id}", name="message_delete")
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $login = $request->getSession();
+
+        $em = $this->getDoctrine()->getManager();
+        $message = $em->getRepository('PAFBundle:Chat')->find($id);
+        $em->remove($message);
+        $em->flush();
+
+        $login->getFlashBag()->add('success', 'Votre message a bien été supprimé');
+
+        $url = $this->generateUrl('chat');
+        return $this->redirect($url);
     }
 }
