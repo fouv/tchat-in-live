@@ -2,9 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta http-equiv="refresh" content="20">
         <title>PAF Le Chat{% block title %}| Home{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/jquery.cssemoticons.css') }}">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
         {% endblock %}
         <!--Import Google Icon Font-->
@@ -17,10 +19,11 @@
         {% block body %}{% endblock %}
 
         {% block javascripts %}{% endblock %}
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-                integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
                 crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="{{ asset('js/jquery.cssemoticons.min.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>
