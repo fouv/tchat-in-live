@@ -44,16 +44,20 @@
                 <ul class="collapsible" data-collapsible="accordion">
                     <li>
                         <div class="collapsible-header">
-                            <span class="new badge" data-badge-caption="message(s)">4</span>
+                            <span class="new badge" data-badge-caption="message(s)">{{ chat.message|length }}</span>
                             <i class="material-icons">mail</i>Message(s) envoyé(s)
                         </div>
                         <div class="collapsible-body grey">
-                            <p>Lorem ipsum dolor sit amet.</p>
+                            {% for message in chats %}
+                                {% if message.name == name %}
+                                    <p>[{{ message.indicator|date("d/m/Y H:i:s") }}] : {{ message.message }}</p>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </li>
                     <li>
                         <div class="collapsible-header">
-                            <span class="badge">1</span>
+                            <span class="badge">?</span>
                             <i class="material-icons">settings</i>W.I.P.</div>
                         <div class="collapsible-body grey">
                             <p>Lorem ipsum dolor sit amet.</p>

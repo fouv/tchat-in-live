@@ -16,12 +16,14 @@ class UserController extends Controller
      */
     public function showAction($name)
     {
-        // TODO
+        // TODO : count
         $chat = $this->getDoctrine()->getRepository('PAFBundle:Chat')->findOneBy(array('name' => $name));
+        $chats = $this->getDoctrine()->getRepository('PAFBundle:Chat')->findAll();
 
         return $this->render('PAFBundle:user:show.html.twig', array(
             'name'      => $name,
             'chat'     => $chat,
+            'chats'     => $chats,
         ));
     }
 
