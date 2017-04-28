@@ -29,6 +29,7 @@
             <div class="card-panel teal lighten-2">
                 <table>
                     <tr>
+                        <td><img class="responsive-img" src="{{ asset('img/nyan2.gif') }}" style="height: 64px;"></td>
                         <td class="white-text">{{ msg }}</td>
                         <td class="right-align"><a href="#" class="card-close waves-effect waves-light modal-trigger btn btn-large white btn-flat">Close</a></td>
                     </tr>
@@ -45,25 +46,24 @@
                         <div class="card">
                             <div class="card-image">
                                 <img class="responsive-img" src="http://materializecss.com/images/sample-1.jpg">
-                                    {#<a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">more_vert</i></a>#}
                             </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4 center-align">{{ name }}</span>
+                            <div class="card-content center-align">
+                                <span class="card-title activator grey-text text-darken-4">{{ name }}</span>
+                                <p class="text-puce green-text darken-3"> ONLINE</p>
                             </div>
                             <div class="card-action">
-                                    <ul class="inline-li center-align">
-                                        <li><a href="/show/{{ name }}" class="btn-floating"><i class="material-icons">person</i></a></li>
-                                        <li><a href="/edit/{{ name }}" class="btn-floating disabled"><i class="material-icons">edit</i></a></li>
-                                        <li><a href="/avatar/{{name }}" class="btn-floating disabled"><i class="material-icons">insert_photo</i></a></li>
-                                        <li><a href="/clear/{{ name }}" class="btn-floating disabled"><i class="material-icons">close</i></a></li>
-                                    </ul>
+                                <ul class="inline-li center-align">
+                                    <li><a href="/show/{{ name }}" class="btn-floating"><i class="material-icons">person</i></a></li>
+                                    <li><a href="/edit/{{ name }}" class="btn-floating disabled"><i class="material-icons">edit</i></a></li>
+                                    <li><a href="/avatar/{{name }}" class="btn-floating disabled"><i class="material-icons">insert_photo</i></a></li>
+                                    <li><a href="/clear/{{ name }}" class="btn-floating disabled"><i class="material-icons">close</i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col s9">
-                <div class="divider"></div>
                 <table class="striped">
                     <tbody>
                         {% for chat in chats %}
@@ -75,6 +75,12 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s9 offset-s2">
+                <div class="divider"></div>
             </div>
         </div>
 

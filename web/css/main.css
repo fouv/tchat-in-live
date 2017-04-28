@@ -8,6 +8,17 @@
     padding: 0 24px 0 24px !important;
 }
 
+.card-panel table > td > img {
+    height: 64px;
+}
+
+.text-puce:before {
+    color: #2e7d32;
+    content: '\25CF';
+    font-size: 8px;
+    vertical-align: text-top;
+}
+
 .inline-li > li {
     float: none;
     display: inline-block !important;
